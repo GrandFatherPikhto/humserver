@@ -1,0 +1,32 @@
+{
+  "name": "humserver",
+  "version": "1.0.0",
+  "description": "Считыает данные с датчиков и отправляет их по адресу https://localhost:3000/api/humidity",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "serve": "nodemon index.js --ignore ./data/*.json",
+    "start": "node index.js",
+    "testdb": "node data/testdb.js"
+  },
+  "author": "Denis.A.Evstigneev@gmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.1",
+    "chart.js": "^3.9.1",
+    "colors": "^1.4.0",
+    "csv": "^6.2.1",
+    "csv-parse": "^5.3.1",
+    "dateformat": "^5.0.3",
+    "ejs": "^3.1.8",
+    "express": "^4.18.2",
+    "express-form-data": "^2.0.19",
+    "serialport": "^10.4.0",
+    "simple-ajax-vanilla": "^4.3.0",
+    "sqlite3": "^5.1.4"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.14",
+    "nodemon": "^2.0.20"
+  }
+}
