@@ -6,7 +6,6 @@ import path from 'path'
 import serverRoutes from './routes/humidity.js'
 
 import { createStorage } from "./data/sensorsdb.js"
-import {uploadDatabaseFile} from "./data/yandex.js";
 
 const __dirname = path.resolve()
 const PORT = process.env.PORT ?? 3000
