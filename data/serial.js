@@ -1,35 +1,13 @@
 import { SerialPort, DelimiterParser, ReadlineParser } from 'serialport'
-import { autoDetect, WindowsBinding } from '@serialport/bindings-cpp'
 import {writeSensors} from "./sensorsdb.js"
-
-import * as fs from 'fs'
-import path from 'path'
 
 const vendorId  = '10C4'
 const productId = 'EA60'
 const pntId     =  'USB\\VID_10C4&PID_EA60\\0001'
 
-const __dirname = path.resolve()
-
 const parser = new ReadlineParser()
 
 export let serialPort = null
-export let portInfo   = null
-export const hihData  = []
-
-let startDateTime   = new Date()
-let currentDateTime = new Date()
-
-const dateTimeString = (datetime) => {
-    return new Intl.DateTimeFormat(
-        'ru-RU',
-        {
-            dateStyle: 'short',
-            timeStyle: 'long',
-            timeZone: 'Europe/Moscow'
-        }).format(datetime)
-}
-
 
 export const startRead = () => {
     if (serialPort === null) {
@@ -54,9 +32,9 @@ export const startRead = () => {
                         if (str.startsWith("JSON:\t")) {
                             try {
                                 const sensor = JSON.parse(str.substring(6))
+                                // console.log(new Date(Number.parseInt(sensor.timestamp)*1000))
                                 sensors.push(sensor)
                                 if (Number.parseInt(sensor.sensor) === 7) {
-                                    hihData.push(sensors)
                                     writeSensors(sensors)
                                     sensors = []
                                 }

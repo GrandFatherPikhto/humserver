@@ -4,7 +4,7 @@ import path from 'path'
 import {json} from 'express'
 import * as fs from 'fs'
 import humidity from "../routes/humidity.js"
-import {startRead, stopRead, hihData } from "../data/serial.js"
+import {startRead, stopRead } from "../data/serial.js"
 import {readDatasetConfig, readDatasets, writeDatasetConfig} from "../data/sensorsdb.js";
 import {readConfig, writeConfig} from "../data/config.js";
 
